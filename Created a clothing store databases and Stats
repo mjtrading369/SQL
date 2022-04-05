@@ -1,0 +1,22 @@
+REATE TABLE clothes(id INTEGER PRIMARY KEY,types TEXT, size INTEGER, color TEXT, price INTEGER,sex TEXT, quantity INTEGER);
+
+INSERT INTO clothes VALUES
+(1,'Jean', 'medium', 'red', 20, 'male', 15),
+(2,'shirt', 'medium', 'blue', 40, 'male', 25),
+(3,'skirt', 'samll', 'white', 30.25, 'female', 48),
+(4,'top', 'small', 'black', 15.27, 'fenle', 52),
+(5,'socks', 'medium', 'white', 5.99, 'male', 30),
+(6,'shoes', '10', 'black', 21.20, 'male', 32),
+(7,'boxers', 'large', 'red', 17.20, 'male', 15),
+(8,'panties', 'medium', 'red', 18.25, 'male', 15),
+(9,'white Ts', 'medium', 'red', 9.99, 'male', 15),
+(10,'bra', 'medium', 'red', 12.99, 'male', 15),
+(11,'bathing suit', 'medium', 'red', 17.99, 'male', 15),
+(12,'gloves', 'medium', 'red', 22.35, 'male', 15),
+(13,'jacket', 'medium', 'red', 99.99, 'male', 15),
+(14,'hats', 'medium', 'red', 37.99, 'male', 15),
+(15,'bags', 'medium', 'red', 125.99, 'male', 15);
+
+SELECT * FROM clothes ORDER BY price asc;
+SELECT SUM(quantity) FROM clothes;
+
