@@ -1,0 +1,37 @@
+/* Create table about the people and what they do here */
+CREATE TABLE famous 
+(id INTEGER PRIMARY KEY AUTOINCREMENT, 
+name TEXT, 
+genre TEXT, 
+race TEXT, 
+oscar INTEGER,
+buddies_id INTEGER);
+
+INSERT INTO famous(name, genre, race, oscar, buddies_id) VALUES('Tom', 'action', 'white', 4, 2);
+INSERT INTO famous (name, genre, race, oscar, buddies_id)VALUES('Denzel', 'suspense', 'black', 11, 1);
+INSERT INTO famous (name, genre, race, oscar, buddies_id)VALUES('Salma', 'romance', 'latina', 6, 1);
+INSERT INTO famous(name, genre, race, oscar, buddies_id) VALUES('john', 'action', 'white', 1, 2);
+INSERT INTO famous(name, genre, race, oscar, buddies_id) VALUES('james', 'action', 'white', 2, 3);
+INSERT INTO famous(name, genre, race, oscar, buddies_id) VALUES('frank', 'action', 'white', 7, 5);
+INSERT INTO famous(name, genre, race, oscar, buddies_id) VALUES('Toll', 'action', 'white', 9, 6);
+INSERT INTO famous(name, genre, race, oscar, buddies_id) VALUES('short', 'action', 'white', 10, 7);
+
+
+
+
+
+
+
+CREATE TABLE star_hobbies( id INTEGER PRIMARY KEY AUTOINCREMENT,hobbie1 TEXT, hobbie2 TEXT);
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('diving','skating');
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('flying','drinking');
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('dancing','dreaming');
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('teaching','reading');
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('learningg','volunteer');
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('crying','singing');
+INSERT INTO star_hobbies(hobbie1, hobbie2) VALUES('boxing','fighting');
+
+SELECT famous.name, famous.genre, star_hobbies.hobbie1 as Hobby_main, star_hobbies.hobbie2 as Hobby
+FROM famous
+JOIN star_hobbies
+ON famous.buddies_id = star_hobbies.id;
