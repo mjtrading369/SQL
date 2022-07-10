@@ -1,0 +1,68 @@
+/*create table/*
+
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL 
+)
+
+
+/* checking out the table contents*/
+SELECT * 
+from BIT_DB.Spotifydata;
+
+/* Pulling the most popular songs*/
+SELECT artist_name, track_name, popularity
+FROM BIT_DB.Spotifydata
+WHERE popularity >=90
+ORDER BY popularity desc;
+
+/* what is the average popularity of the song*/
+SELECT avg(popularity)
+FROM BIT_DB.Spotifydata;
+
+/* GROUP THE SONGS BEST ON BEST, GOOD, AVERAGE, OR WORST ON POPULARITY SCORE*/;
+SELECT artist_name, track_name, popularity,
+    CASE
+        WHEN popularity > 89 THEN "Best_Song"
+        WHEN popularity > 85 THEN "Good_Song"
+        WHEN popularity > 74 THEN "Average_Song"
+        ELSE "Worst_Song"
+    END AS Songs_Rating
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc;
+
+/* creating a temp table to query the previous resul*/
+CREATE TEMPORARY TABLE TEMP_SONGS AS 
+SELECT artist_name, track_name, popularity,
+    CASE
+        WHEN popularity > 89 THEN "Best_Song"
+        WHEN popularity > 85 THEN "Good_Song"
+        WHEN popularity > 74 THEN "Average_Song"
+        ELSE "Worst_Song"
+    END AS Songs_Rating
+FROM BIT_DB.Spotifydata
+ORDER BY popularity desc;
+
+/* GET THE AVERAGE RATING FOR EACH CATEGORY OF SONG RATING FROM PREVIOUS QUERRY*/
+SELECT popularity, Songs_Rating
+FROM TEMP_SONGS
+GROUP BY Songs_Rating
+ORDER BY popularity DESC;
+
+
